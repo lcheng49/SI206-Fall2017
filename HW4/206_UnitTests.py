@@ -5,8 +5,8 @@ import unittest
 # Homework 3 - Code
 
 ##COMMENT YOUR CODE WITH:
-# Section Day/Time: 
-# People you worked with: 
+# Section Day/Time:
+# People you worked with:
 
 ######### DO NOT CHANGE PROVIDED CODE #########
 ### Below is the same cards.py code you saw in lecture.
@@ -24,7 +24,7 @@ class Card(object):
 			self.rank = self.faces[rank]
 		else:
 			self.rank = rank
-		self.rank_num = rank # To handle winning comparison 
+		self.rank_num = rank # To handle winning comparison
 
 	def __str__(self):
 		return "{} of {}".format(self.rank,self.suit)
@@ -56,7 +56,7 @@ class Deck(object):
 	def replace_card(self, card):
 		card_strs = [] # forming an empty list
 		for c in self.cards: # each card in self.cards (the initial list)
-			card_strs.append(c.__str__()) # appends the string that represents that card to the empty list 
+			card_strs.append(c.__str__()) # appends the string that represents that card to the empty list
 		if card.__str__() not in card_strs: # if the string representing this card is not in the list already
 			self.cards.append(card) # append it to the list
 
@@ -118,11 +118,55 @@ if __name__ == "__main__":
 
 ######### DO NOT CHANGE CODE ABOVE THIS LINE #########
 
-## You can write any additional debugging/trying stuff out code here... 
+## You can write any additional debugging/trying stuff out code here...
 ## OK to add debugging print statements, but do NOT change functionality of existing code.
 ## Also OK to add comments!
 
 #########
+class h4test(unittest.TestCase):
+	def testone(self):
+		yolo = Card(0,12)
+		self.assertEqual(yolo.rank, "Queen")
+
+	def testtwo(self):
+		yolo = Card(0,1)
+		self.assertEqual(yolo.rank, "Ace")
+
+	def testthree(self):
+		yolo = Card(0,3)
+		self.assertEqual(yolo.rank, 3)
+
+	def testfour(self):
+		yolo = Card(1,1)
+		self.assertEqual(yolo.suit, "Clubs")
+
+	def testfive(self):
+		yolo = Card(2,1)
+		self.assertEqual(yolo.suit, "Hearts")
+
+	def testsix(self):
+		yolo = Card()
+		self.assertEqual(yolo.suit_names, ["Diamonds","Clubs","Hearts","Spades"])
+
+	def testseven(self):
+		yolo = Card(2,7)
+		self.assertEqual(yolo.__str__(), "7 of Hearts")
+
+	def testeight(self):
+		yolo = Deck()
+		self.assertEqual(len(yolo.cards), 52)
+
+	def testnine(self):
+		yolo = Deck()
+		aish = Card()
+		self.assertEqual(type(yolo.pop_card()), type(aish))
+
+	def testten(self):
+		yolo = play_war_game()
+		self.assertEqual(len(yolo),3)
+		self.assertEqual(type(yolo[0]), str)
+
+
 
 
 
@@ -139,5 +183,5 @@ if __name__ == "__main__":
 
 #############
 ## The following is a line to run all of the tests you include:
-unittest.main(verbosity=2) 
+unittest.main(verbosity=2)
 ## verbosity 2 to see detail about the tests the code fails/passes/etc.
