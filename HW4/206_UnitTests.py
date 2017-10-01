@@ -162,9 +162,23 @@ class h4test(unittest.TestCase):
 		self.assertEqual(type(yolo.pop_card()), type(aish))
 
 	def testten(self):
-		yolo = play_war_game()
+		yolo = play_war_game(testing=True)
 		self.assertEqual(len(yolo),3)
 		self.assertEqual(type(yolo[0]), str)
+
+	#Test that popping off last result would be King of Spades after sorting
+	def testeleven(self):
+		yolo = Deck()
+		yolo.sort_cards()
+		aish = yolo.pop_card(-1)
+		self.assertEqual(aish.__str__(), "King of Spades")
+
+	#Test to print out full Deck
+	def testtwelve(self):
+		yolo = Card(3,6)
+		self.assertEqual(yolo.rank, 6)
+		self.assertEqual(yolo.suit, "Spades")
+
 
 
 
